@@ -5,6 +5,17 @@
     require_once('db.php');
 ?>
 
+<?php
+
+$query_get_id = "SELECT user_id FROM user WHERE username = '" . $_SESSION["username"] . "';";
+$statement_get_id = $pdo -> prepare($query_get_id);
+$statement_get_id -> execute();
+$tmp = $statement_get_id -> fetchAll();
+$_SESSION["userid"] = $tmp[0][0];
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +27,7 @@
 <body>
     <div class="container">
         <h1>Welcome <?php echo $_SESSION["username"]?></h1>
+        <a href='logout.php'><button type="button" class="btn btn-danger">Log out</button></a>
         <div class="row">
             <div class="col-md-6">
                 <h2>Add Task</h2>
@@ -26,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea class="form-control" name="description" required></textarea>
+                        <textarea class="form-control" name="description"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Task</button>
                 </form>

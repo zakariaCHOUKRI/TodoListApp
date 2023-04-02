@@ -36,6 +36,13 @@
 </body>
 </html>
 
+<?php
+
+if (isset($_GET['failed']) && $_GET['failed'] == true) {
+	echo "the password is incorrect";
+}
+
+?>
 
 <?php
 

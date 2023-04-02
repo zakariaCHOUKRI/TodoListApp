@@ -29,7 +29,7 @@
             header('Location: dashboard.php');
             $_SESSION["username"] = $entered_username;
         } else {
-            header('Location: index.php');
+            header('Location: index.php?failed=true');
         }
     }
 
