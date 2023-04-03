@@ -22,13 +22,13 @@
         . $entered_username . "@email.com" . "', '" . $entered_pwd . "');";
         $statement = $pdo -> prepare($signup_query);
         $statement -> execute();
-        header('Location: dashboard.php');
         $_SESSION["username"] = $entered_username;
+        header('Location: dashboard.php');
     } else {
         $db_pwd = $result[0][0];
         if ($entered_pwd == $db_pwd) {
-            header('Location: dashboard.php');
             $_SESSION["username"] = $entered_username;
+            header('Location: dashboard.php');
         } else {
             header('Location: index.php?failed=true');
         }
