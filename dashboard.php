@@ -1,11 +1,13 @@
 <?php
-    if(!isset($_SESSION)) {
-        session_start();
+    session_start();
+    if(!isset($_SESSION["username"])) {
+        header("Location: index.php");
     }
     require_once('db.php');
 ?>
 
 <?php
+
 
 $query_get_id = "SELECT user_id FROM user WHERE username = '" . $_SESSION["username"] . "';";
 $statement_get_id = $pdo -> prepare($query_get_id);
